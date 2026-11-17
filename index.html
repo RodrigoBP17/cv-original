@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rodrigo Bartolomé · Currículum 2029</title>
+  <meta name="description" content="Currículum interactivo de Rodrigo Bartolomé: desarrollador de aplicaciones multiplataforma y especialista en Inteligencia Artificial. Currículum del futuro: año 2029.">
+  <meta name="theme-color" content="#05070d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Secuencia de arranque -->
+  <div id="boot" role="status" aria-label="Cargando">
+    <div class="boot-box">
+      <pre id="boot-log"></pre>
+      <button id="boot-skip" type="button">Saltar ⏎</button>
+    </div>
+  </div>
+
+  <div id="scrollbar" aria-hidden="true"></div>
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- Navegación -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#inicio" aria-label="Inicio">RB<span>_</span></a>
+    <nav id="menu" aria-label="Secciones">
+      <span class="pill" aria-hidden="true"></span>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#formacion">Formación</a>
+      <a href="#especializacion">Certificaciones</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#asistente">Asistente IA</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- 1. Presentación -->
+    <section class="hero" id="inicio">
+      <canvas id="net" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow"><span class="dot"></span> Currículum · año <b id="hero-year">2029</b></p>
+          <h1 id="hero-name" aria-label="Rodrigo Bartolomé">Rodrigo Bartolomé</h1>
+          <p class="typed-line" aria-live="off"><span class="prompt">&gt;</span> <span id="typed"></span><span class="caret"></span></p>
+          <p class="lema" id="hero-lema"></p>
+          <p class="intro" id="hero-intro"></p>
+          <div class="cta">
+            <a class="btn primary" href="estacion.html">Explorar la estación 3D <span aria-hidden="true">→</span></a>
+            <a class="btn" href="#sobre">Ver perfil <span aria-hidden="true">↓</span></a>
+            <a class="btn" href="CV%20original%20de%20Rodrigo%20Bartolome.pdf" download data-pdf>Descargar PDF</a>
+          </div>
+        </div>
+
+        <aside class="ficha card" aria-label="Resumen del perfil">
+          <div class="ficha-bar"><i></i><i></i><i></i><span>perfil.json</span></div>
+          <div class="ficha-id"><img src="img/rodrigo.jpg" alt="Foto de Rodrigo Bartolomé" width="64" height="64"><div><b>Rodrigo Bartolomé</b><small>DAM · IA y Big Data · 2029</small></div></div>
+          <pre id="ficha-code"></pre>
+          <a class="ficha-jump" href="estacion.html">▶ entrar en la estación 3D</a>
+        </aside>
+      </div>
+      <p class="aviso" id="aviso"></p>
+    </section>
+
+    <!-- 2. Sobre mí -->
+    <section id="sobre" class="section">
+      <header class="sec-head reveal"><span class="sec-num">01</span><h2>Sobre mí</h2><p>Quién soy, qué me mueve y a dónde quiero llegar.</p></header>
+      <div class="about-grid">
+        <article class="card reveal about-perfil">
+          <h3>Perfil profesional</h3>
+          <p id="about-perfil"></p>
+        </article>
+        <article class="card reveal about-int">
+          <h3>Intereses</h3>
+          <div class="chips" id="intereses" role="tablist" aria-label="Intereses"></div>
+          <p class="chip-text" id="interes-texto" aria-live="polite"></p>
+        </article>
+        <article class="card reveal about-obj">
+          <h3>Objetivos profesionales</h3>
+          <ul class="objetivos" id="objetivos"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. Experiencia -->
+    <section id="experiencia" class="section">
+      <header class="sec-head reveal"><span class="sec-num">02</span><h2>Experiencia</h2><p>Dos veranos en Playa Park y mis prácticas del ciclo en Indra.</p></header>
+      <div class="exp-grid" id="exp"></div>
+    </section>
+
+    <!-- 4. Formación académica -->
+    <section id="formacion" class="section">
+      <header class="sec-head reveal"><span class="sec-num">03</span><h2>Formación académica</h2><p>Mi evolución, etapa a etapa. Pulsa cada una para desplegarla.</p></header>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- 4. Especialización y certificaciones -->
+    <section id="especializacion" class="section">
+      <header class="sec-head reveal"><span class="sec-num">04</span><h2>Especialización y certificaciones</h2><p id="cert-sub"></p></header>
+      <div class="cert-grid" id="certs"></div>
+    </section>
+
+    <!-- 5. Habilidades -->
+    <section id="habilidades" class="section">
+      <header class="sec-head reveal"><span class="sec-num">05</span><h2>Habilidades</h2><p>Tecnologías que he usado en el ciclo de DAM y en la especialización. Cambia de área con las pestañas.</p></header>
+      <div class="skills card reveal">
+        <div class="tabs" id="skill-tabs" role="tablist" aria-label="Categorías de habilidades"></div>
+        <div id="skill-panels"></div>
+      </div>
+      <div class="skills-extra" id="skills-extra"></div>
+    </section>
+
+    <!-- Asistente IA -->
+    <section id="asistente" class="section">
+      <header class="sec-head reveal"><span class="sec-num">06</span><h2>Pregúntale a mi asistente</h2><p>R-AI responde solo con los datos de este currículum. Si no lo sabe, lo dice.</p></header>
+      <div class="term card reveal">
+        <div class="ficha-bar"><i></i><i></i><i></i><span>r-ai — asistente del currículum</span></div>
+        <div class="term-out" id="term-out" aria-live="polite"></div>
+        <div class="term-chips" id="term-chips"></div>
+        <form class="term-in" id="term-form" autocomplete="off">
+          <label for="term-input" class="prompt">&gt;</label>
+          <input id="term-input" type="text" placeholder="Escribe una pregunta o «ayuda»" maxlength="120" spellcheck="false">
+          <button type="submit" aria-label="Enviar">↵</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 6. Contacto -->
+    <section id="contacto" class="section">
+      <header class="sec-head reveal"><span class="sec-num">07</span><h2>Contacto</h2><p>¿Hablamos?</p></header>
+      <div class="contact card reveal" id="contact"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Diseñado y desarrollado por Rodrigo Bartolomé · Proyecto de IPE · DAM</p>
+    <p class="hint">// pista: a R-AI le gusta que le pregunten por el «futuro»</p>
+  </footer>
+
+  <!-- Registro de exploración -->
+  <aside class="hud" id="hud">
+    <button class="hud-btn" id="hud-btn" type="button" aria-expanded="false" aria-controls="hud-panel" aria-label="Registro de exploración">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5"/><circle id="hud-ring" cx="18" cy="18" r="15.5"/></svg>
+      <span id="hud-count">0/8</span>
+    </button>
+    <div class="hud-panel" id="hud-panel" hidden>
+      <h3>Registro de exploración</h3>
+      <p>Esta web esconde 8 interacciones. ¿Las encuentras todas?</p>
+      <ul id="hud-list"></ul>
+      <button type="button" class="hud-reset" id="hud-reset">Reiniciar registro</button>
+    </div>
+  </aside>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Recompensa al completar la exploración -->
+  <div class="modal" id="reward" hidden>
+    <div class="modal-box card" role="dialog" aria-modal="true" aria-labelledby="reward-title">
+      <p class="eyebrow"><span class="dot"></span> 8 / 8 · acceso total</p>
+      <h2 id="reward-title">Exploración completada</h2>
+      <p>Has recorrido el perfil entero, incluido el comando oculto. Gracias por dedicarle este rato: conseguir que alguien quiera seguir explorando es justo lo que busco cuando diseño una aplicación.</p>
+      <p class="firma">— Rodrigo</p>
+      <button class="btn primary" type="button" id="reward-close">Cerrar</button>
+    </div>
+  </div>
+
+  <noscript><p style="padding:2rem;color:#fff">Esta web necesita JavaScript para mostrar el currículum interactivo.</p></noscript>
+
+  <script src="js/data.js"></script>
+  <script src="js/rai.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

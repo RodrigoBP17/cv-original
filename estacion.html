@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>Rodrigo Station 2029 · Currículum explorable</title>
+  <meta name="description" content="Explora en 3D el currículum de Rodrigo Bartolomé: una estación espacial con seis salas.">
+  <meta name="theme-color" content="#03050a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/station.css">
+</head>
+<body>
+
+  <canvas id="game" aria-label="Estación espacial explorable"></canvas>
+  <div id="vignette" aria-hidden="true"></div>
+  <div id="fade" aria-hidden="true"></div>
+
+  <!-- Pantalla de inicio -->
+  <div class="overlay" id="start">
+    <div class="start-box">
+      <p class="eyebrow"><span class="dot"></span> Currículum explorable</p>
+      <h1>Rodrigo Station <span>2029</span></h1>
+      <p class="sub">Soy Rodrigo Bartolomé. Mi currículum está repartido por las seis salas de esta estación: recórrela y consulta sus terminales.</p>
+      <ul class="keys">
+        <li><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span> Moverse</li>
+        <li><span><kbd>Ratón</kbd></span> Girar la cámara</li>
+        <li><span><kbd>E</kbd></span> Interactuar</li>
+        <li><span><kbd>Esc</kbd></span> Cerrar ventanas</li>
+        <li><span><kbd>R</kbd></span> Volver al inicio</li>
+        <li><span><kbd>Mayús</kbd></span> Correr · <kbd>Rueda</kbd> zoom</li>
+      </ul>
+      <button class="btn primary" id="start-btn" type="button">Iniciar exploración</button>
+      <p class="alt">¿Sin teclado? Usa el panel «Navegación» para ir a cada sala con un clic · <a href="index.html">Versión clásica</a></p>
+    </div>
+  </div>
+
+  <!-- Aviso si el 3D no puede cargarse -->
+  <div class="overlay" id="fallback" hidden>
+    <div class="start-box">
+      <h1>No se ha podido cargar la estación</h1>
+      <p class="sub">Hace falta conexión a internet la primera vez y un navegador con WebGL. Puedes ver el mismo currículum en la versión clásica.</p>
+      <a class="btn primary" href="index.html">Abrir la versión clásica</a>
+    </div>
+  </div>
+
+  <!-- Interfaz de juego -->
+  <div id="hud" hidden>
+    <div class="hud-zone">
+      <small>Rodrigo Station · 2029</small>
+      <strong id="hud-zone">Pasillo central</strong>
+    </div>
+
+    <!-- Rótulo que aparece al entrar en una sala -->
+    <div class="banner" id="banner" aria-live="polite"><small id="banner-kicker"></small><strong id="banner-title"></strong><span id="banner-sub"></span></div>
+
+    <aside class="nav-panel" id="nav-panel">
+      <button class="nav-head" id="nav-toggle" type="button" aria-expanded="true" title="Mostrar u ocultar la navegación">
+        <svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15"/><circle id="ring" cx="18" cy="18" r="15"/></svg>
+        <span class="nav-title">Navegación<small id="meter-text"></small></span>
+        <b id="hud-progress">0%</b>
+      </button>
+      <div class="nav-body" id="nav-body">
+        <ul id="zone-list"></ul>
+        <canvas id="minimap" title="Pulsa una sala para ir a ella"></canvas>
+      </div>
+    </aside>
+
+    <div class="hud-bottom">
+      <div class="hud-actions">
+        <button type="button" id="btn-home" title="Volver al inicio (R)">⌂ Inicio <kbd>R</kbd></button>
+        <a href="index.html" title="Versión clásica del currículum">Versión clásica</a>
+      </div>
+      <p class="legend"><kbd>WASD</kbd> mover <kbd>Ratón</kbd> cámara <kbd>E</kbd> interactuar <kbd>Mayús</kbd> correr <span id="lock-hint">· clic en la escena para capturar el ratón</span></p>
+    </div>
+
+    <button class="prompt" id="prompt" type="button" hidden></button>
+    <div class="stick" id="stick" aria-hidden="true"><i></i></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- Ventana de información -->
+  <div class="win-wrap" id="win" hidden>
+    <section class="win" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <header>
+        <div><small id="win-zone"></small><h2 id="win-title"></h2></div>
+        <button type="button" id="win-close" aria-label="Cerrar">Esc ✕</button>
+      </header>
+      <div class="win-body" id="win-body"></div>
+    </section>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/photo.js"></script>
+  <script src="js/rai.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/station.js"></script>
+</body>
+</html>

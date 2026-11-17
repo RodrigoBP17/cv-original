@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV original de Rodrigo Bartolome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* CV de una página A4 generado a partir de js/data.js. Se convierte en PDF con el navegador. */
+    @page { size: A4; margin: 0; }
+    :root { --ink: #101828; --muted: #5b6577; --line: #e3e8f0; --a: #0aa5c8; --b: #7b5cf0; --side: #0b1222; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #d9dee8; }
+    body { font: 400 9.6pt/1.45 'Space Grotesk', 'Segoe UI', Arial, sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { width: 210mm; height: 297mm; margin: 0 auto; display: grid; grid-template-columns: 68mm 1fr; background: #fff; overflow: hidden; }
+    @media screen { .page { margin: 24px auto; box-shadow: 0 20px 60px -20px rgba(0,0,0,.35); } }
+    h1, h2, h3, p, ul, ol { margin: 0; } ul, ol { padding: 0; list-style: none; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Columna lateral */
+    .side { position: relative; background: var(--side); color: #dfe6f3; padding: 11mm 7mm 8mm; display: flex; flex-direction: column; gap: 4.6mm; }
+    .side::before { content: ''; position: absolute; inset: 0; background: radial-gradient(60mm 50mm at 100% 0, rgba(123,92,240,.35), transparent 70%), radial-gradient(50mm 60mm at 0 100%, rgba(10,165,200,.25), transparent 70%); pointer-events: none; }
+    .side > * { position: relative; }
+    .photo { width: 34mm; height: 34mm; border-radius: 50%; object-fit: cover; margin: 0 auto; display: block; border: 1.2mm solid #0b1222; box-shadow: 0 0 0 .6mm var(--a), 0 0 8mm rgba(10,165,200,.55); }
+    .side h2 { font: 600 7.2pt 'JetBrains Mono', monospace; letter-spacing: .18em; text-transform: uppercase; color: #7fe3f7; margin-bottom: 2.4mm; padding-bottom: 1.4mm; border-bottom: .3mm solid rgba(255,255,255,.14); }
+    .contact li { display: grid; grid-template-columns: 4.4mm 1fr; gap: 2mm; align-items: start; margin-bottom: 1.6mm; font-size: 8.6pt; overflow-wrap: anywhere; }
+    .contact svg { width: 3.6mm; height: 3.6mm; stroke: #7fe3f7; fill: none; stroke-width: 2; margin-top: .4mm; }
+    .tech { display: flex; flex-wrap: wrap; gap: 1.2mm; }
+    .tech li { padding: .5mm 2mm; border-radius: 1.2mm; background: rgba(255,255,255,.08); font: 400 7.6pt 'JetBrains Mono', monospace; }
+    .grp { font: 600 7pt 'JetBrains Mono', monospace; color: #9aa6bd; margin: 2.2mm 0 1.2mm; }
+    .grp:first-of-type { margin-top: 0; }
+    .lang { margin-bottom: 2mm; }
+    .lang b { font-weight: 500; } .lang span { float: right; color: #7fe3f7; font: 600 8pt 'JetBrains Mono', monospace; }
+    .lang small { display: block; color: #9aa6bd; font-size: 7.6pt; }
+    .meter { height: 1.2mm; border-radius: 1mm; background: rgba(255,255,255,.12); margin-top: 1mm; overflow: hidden; }
+    .meter i { display: block; height: 100%; background: linear-gradient(90deg, var(--b), var(--a)); }
+    .soft li { font-size: 8.6pt; margin-bottom: .8mm; padding-left: 3mm; position: relative; }
+    .soft li::before { content: ''; position: absolute; left: 0; top: 1.6mm; width: 1.4mm; height: 1.4mm; border-radius: 50%; background: var(--a); }
+
+    /* Columna principal */
+    .main { padding: 11mm 11mm 8mm 10mm; display: flex; flex-direction: column; gap: 4mm; }
+    .head h1 { font-size: 25pt; line-height: 1; letter-spacing: -.03em; }
+    .head h1 span { background: linear-gradient(100deg, var(--a), var(--b)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .role { margin-top: 2mm; font: 600 8pt 'JetBrains Mono', monospace; color: var(--a); }
+    .lema { margin-top: 3mm; padding: 2.2mm 3.4mm; border-left: .9mm solid var(--b); background: #f4f2fe; font-size: 8.9pt; }
+    .main h2 { display: flex; align-items: center; gap: 2.4mm; font-size: 10.5pt; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2.6mm; }
+    .main h2::after { content: ''; flex: 1; height: .3mm; background: var(--line); }
+    .main h2 i { width: 2.4mm; height: 2.4mm; border-radius: .6mm; background: linear-gradient(135deg, var(--a), var(--b)); transform: rotate(45deg); }
+    .item { display: grid; grid-template-columns: 1fr auto; gap: 0 4mm; margin-bottom: 2.1mm; break-inside: avoid; }
+    .item b { font-weight: 700; font-size: 9.8pt; }
+    .item .when { font: 600 7.8pt 'JetBrains Mono', monospace; color: var(--muted); white-space: nowrap; }
+    .item .where { grid-column: 1 / -1; color: var(--a); font-weight: 500; font-size: 8.8pt; }
+    .item ul { grid-column: 1 / -1; margin-top: .8mm; }
+    .item li { position: relative; padding-left: 3.4mm; font-size: 8.8pt; color: #3a4456; }
+    .item li::before { content: '▹'; position: absolute; left: 0; color: var(--b); }
+    .item p { grid-column: 1 / -1; font-size: 8.8pt; color: #3a4456; }
+    .certs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4mm 4mm; }
+    .certs li { font-size: 8.6pt; padding-left: 3.4mm; position: relative; color: #3a4456; }
+    .certs li::before { content: '✓'; position: absolute; left: 0; color: var(--a); font-weight: 700; }
+    .foot { margin-top: auto; padding-top: 3mm; border-top: .3mm dashed var(--line); font: 400 7.2pt 'JetBrains Mono', monospace; color: var(--muted); display: flex; justify-content: space-between; gap: 4mm; }
+  </style>
+</head>
+<body>
+  <div class="page" id="cv"></div>
+  <script src="js/data.js"></script>
+  <script>
+    (() => {
+      const CV = window.CV, c = CV.contacto, esc = s => String(s).replace(/[&<>"]/g, x => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[x]));
+      const ico = p => `<svg viewBox="0 0 24 24">${p}</svg>`;
+      const I = {
+        mail: ico('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'),
+        tel: ico('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'),
+        gh: ico('<path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 2.8 5.8 3.1 5.8 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>'),
+        ig: ico('<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/>'),
+        pin: ico('<path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>'),
+        car: ico('<path d="M5 16V11l2-5h10l2 5v5M3 16h18v3H3zM7 19v2M17 19v2"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/>')
+      };
+      const formacion = [...CV.formacion].reverse();
+      document.getElementById('cv').innerHTML = `
+        <aside class="side">
+          <img class="photo" src="${esc(CV.foto)}" alt="Foto de ${esc(CV.nombre)}">
+          <section><h2>Contacto</h2><ul class="contact">
+            <li>${I.mail}<span>${esc(c.email)}</span></li>
+            <li>${I.tel}<span>${esc(c.telefono)}</span></li>
+            <li>${I.gh}<a href="${esc(c.github.url)}">${esc(c.github.texto)}</a></li>
+            <li>${I.ig}<a href="${esc(c.instagram.url)}">${esc(c.instagram.texto)}</a></li>
+            <li>${I.pin}<span>${esc(c.ubicacion)}</span></li>
+            <li>${I.car}<span>${esc(c.extra)}</span></li>
+          </ul></section>
+          <section><h2>Tecnologías</h2>
+            ${CV.stack.slice(0, 4).map(g => `<p class="grp">${esc(g.grupo)}</p><ul class="tech">${g.items.slice(0, g.grupo === 'Herramientas' ? 6 : 8).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`).join('')}
+          </section>
+          <section><h2>Idiomas</h2>
+            ${CV.idiomas.map(l => `<div class="lang"><b>${esc(l.nombre)}</b><span>${esc(l.nivel)}</span><small>${esc(l.titulo || 'Lengua materna')}</small><div class="meter"><i style="width:${l.nivelNum}%"></i></div></div>`).join('')}
+          </section>
+          <section><h2>Cómo trabajo</h2><ul class="soft">${CV.sobre.blandas.map(x => `<li>${esc(x)}</li>`).join('')}</ul></section>
+        </aside>
+        <main class="main">
+          <header class="head">
+            <h1>${esc(CV.nombreCompleto.split(' ')[0])} <span>${esc(CV.nombreCompleto.split(' ').slice(1).join(' '))}</span></h1>
+            <p class="role">${esc(CV.hero.roles.slice(0, 2).join('  ·  '))}</p>
+            <p class="lema">${esc(CV.sobre.perfil)}</p>
+          </header>
+          <section><h2><i></i>Experiencia</h2>
+            ${CV.experiencia.map(e => `<div class="item"><b>${esc(e.puesto)}</b><span class="when">${esc(e.periodo)}</span>
+              <span class="where">${esc(e.empresa)}${e.lugar ? ' · ' + esc(e.lugar) : ''}</span>
+              <ul>${e.tareas.slice(0, 2).map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`).join('')}
+          </section>
+          <section><h2><i></i>Formación</h2>
+            ${formacion.map((f, i) => `<div class="item"><b>${esc(f.titulo)}</b><span class="when">${esc(f.periodo)}</span>
+              <span class="where">${esc(f.centro)}</span>${i === 0 ? `<p>${esc(f.etiquetas.join(' · '))}</p>` : i === 1 ? `<p>Prácticas (FCT) en Indra · Java, Kotlin, C#, Spring Boot y bases de datos Oracle y MySQL</p>` : ''}</div>`).join('')}
+          </section>
+          <section><h2><i></i>Certificados</h2>
+            <ul class="certs">${CV.certificados.map(x => `<li>${esc(x.titulo)} <small>(${esc(x.fecha)})</small></li>`).join('')}<li>${esc(CV.idiomas[1].titulo)}</li></ul>
+          </section>
+          <p class="foot"><span>Currículum del futuro · ${CV.year}</span><span>Versión interactiva: estación 3D y web</span></p>
+        </main>`;
+    })();
+  </script>
+</body>
+</html>
