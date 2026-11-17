@@ -42,7 +42,6 @@
     $('#ficha-code').innerHTML =
       `{\n  <span class="k">"año"</span>: <span class="v">${YEAR}</span>,\n` +
       CV.ficha.map(f => `  <span class="k">"${esc(f.clave)}"</span>: <span class="v">"${esc(f.valor)}"</span>`).join(',\n') + '\n}';
-    $('#aviso').innerHTML = `Este es mi currículum del futuro: <b>así será mi perfil profesional en ${YEAR}.</b> La experiencia como socorrista y monitor ya es real.`;
 
     /* Sobre mí */
     $('#about-perfil').textContent = CV.sobre.perfil;
@@ -423,9 +422,9 @@
     if (has(q, 'pdf', 'descarg', 'imprim')) { downloadPDF(true); return ['Descargando el currículum en PDF…']; }
     if (has(q, 'profesor', 'profesora', 'docente', 'evalu', 'nota', 'ipe')) return [
       'Para quien evalúa este proyecto de IPE:',
-      `· Es mi currículum del futuro: cómo será mi perfil en ${YEAR}.`,
-      '· Ya es real: Primaria, ESO, Bachillerato, los certificados de 2022 y mi experiencia como socorrista (2025) y monitor (2026) en Playa Park.',
-      '· Es mi plan: terminar DAM con prácticas en Indra, el B2 de Cambridge y la especialización en IA y Big Data.',
+      '· Formación: Bachillerato Tecnológico, Grado Superior en DAM (2025–2027) y especialización en IA y Big Data (2027–2028).',
+      '· Experiencia: socorrista (2025) y monitor (2026) en Playa Park, y prácticas en Indra (2027).',
+      '· Idiomas: español nativo e inglés B2 First de Cambridge.',
       'Consejo: abre el círculo de abajo a la derecha y entra en la estación 3D.'];
     const res = window.raiAnswer(raw).split('\n');
     return res;

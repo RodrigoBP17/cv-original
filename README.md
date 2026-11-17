@@ -1,6 +1,6 @@
-# Rodrigo Station 2029 · Currículum del futuro
+# Rodrigo Station 2029 · Currículum de Rodrigo Bartolomé
 
-Proyecto de IPE (DAM): mi currículum dentro de tres años, en tres formatos que comparten los mismos datos (`js/data.js`).
+Proyecto de IPE (DAM): mi currículum en 2029, en tres formatos que comparten los mismos datos (`js/data.js`).
 
 - **`estacion.html`**: estación espacial 3D en tercera persona (Three.js) con seis salas: Puente de mando, Laboratorio, Núcleo de IA, Comunicaciones, Archivo de misiones y Hangar de operaciones.
 - **`index.html`**: versión web clásica e interactiva.
