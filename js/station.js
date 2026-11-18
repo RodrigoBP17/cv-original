@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Rodrigo Station 2029 · exploración en tercera persona (Three.js)
+   Rodrigo Station · exploración en tercera persona (Three.js)
    Índice: 1. Datos del mapa      2. Utilidades y texturas   3. Escena, luces y materiales
            4. Arquitectura        5. Puertas y terminales    6. Decoración de salas
            7. Astronauta          8. Colisiones              9. Controles
@@ -161,7 +161,7 @@
       g.fillStyle = '#2b3348'; g.fillRect(0, h * .72, w, h * .28);            // zócalo oscuro
       g.fillStyle = '#4a5878'; g.fillRect(0, h * .72 - 3, w, 3);
       g.fillStyle = 'rgba(255,255,255,.05)'; for (let i = 0; i < 26; i++) g.fillRect(Math.random() * w, Math.random() * h, 30 + Math.random() * 60, 1);
-      g.fillStyle = '#566585'; g.font = `600 13px ${MONO}`; g.fillText('RB-29', 16, h * .72 + 24);
+      g.fillStyle = '#566585'; g.font = `600 13px ${MONO}`; g.fillText('RB-01', 16, h * .72 + 24);
       g.fillStyle = '#1d2433'; for (let i = 0; i < 5; i++) g.fillRect(w * .62, h * .8 + i * 8, 70, 4); // rejilla
     }
     g.strokeStyle = bump ? '#202020' : '#171c2a'; g.lineWidth = 5;
@@ -381,8 +381,8 @@
     /* Cartel de la estación y pantallas informativas del pasillo */
     for (const sx of [-1.7, 1.7]) box(.03, .5, .03, M.frame, sx, 3.75, .05);
     box(4.1, .62, .07, M.frame, 0, 3.42, .05);
-    plane(3.9, .55, new THREE.MeshBasicMaterial({ map: textTex('RODRIGO STATION 2029', hex(ACCENT), { w: 2048, h: 288, size: 170 }), transparent: true, toneMapped: false }), 0, 3.42, .1);
-    wallScreen(infoTex('ESTADO DE LA MISIÓN · ' + CV.year, CV.ficha.map(f => [f.clave.toUpperCase(), f.valor]), hex(ACCENT), 1024, 640), 2.6, 1.62, -3.78, 2.2, 0, PI / 2, ACCENT);
+    plane(3.9, .55, new THREE.MeshBasicMaterial({ map: textTex('RODRIGO STATION', hex(ACCENT), { w: 2048, h: 288, size: 170 }), transparent: true, toneMapped: false }), 0, 3.42, .1);
+    wallScreen(infoTex('ESTADO DE LA MISIÓN', CV.ficha.map(f => [f.clave.toUpperCase(), f.valor]), hex(ACCENT), 1024, 640), 2.6, 1.62, -3.78, 2.2, 0, PI / 2, ACCENT);
     wallScreen(infoTex('DIRECTORIO', ROOMS.map(r => [r.name, r.short]), '#dff4ff', 1024, 640), 2.6, 1.62, 3.78, 2.2, 0, -PI / 2, 0xdff4ff);
     for (const x of [-3.1, 3.1]) { box(1, 1, 1, M.metal, x, .5, 9.1); box(.8, .05, .8, M.accent, x, 1.03, 9.1); box(.5, .5, .5, M.dark, x, 1.3, 9.15).rotation.y = .5; blocks.push([x - .5, 8.6, x + .5, 9.6]); }
 
@@ -729,7 +729,7 @@
       g.save(); g.beginPath(); g.arc(256, 256, 236, 0, 7); g.arc(256, 256, 214, 0, 7, true); g.clip();
       g.fillStyle = '#111'; for (let a = 0; a < 40; a++) { g.save(); g.translate(256, 256); g.rotate(a * PI / 20); g.fillRect(200, -6, 60, 12); g.restore(); }
       g.restore();
-      g.fillStyle = 'rgba(255,210,63,.85)'; g.font = `700 60px ${MONO}`; g.textAlign = 'center'; g.fillText('RB-29', 256, 470);
+      g.fillStyle = 'rgba(255,210,63,.85)'; g.font = `700 60px ${MONO}`; g.textAlign = 'center'; g.fillText('RB-01', 256, 470);
     });
     flat(plane(6, 6, new THREE.MeshBasicMaterial({ map: padTex, transparent: true, opacity: .75, depthWrite: false, toneMapped: false }), 0, .014, 15.4));
 
@@ -748,7 +748,7 @@
     box(1.1, 1, .08, M.frame, -1.5, .8, 0, ship).rotation.z = -.35;
     const flames = [-1, 1].map(s => { const f = cyl(.2, .2, .04, glow(0x9fdcff), -2.37, -.1, s * .5, ship, 18); f.rotation.z = PI / 2; halo(0x9fdcff, 1.1, -2.5, -.1, s * .5, .6, ship); return f; });
     for (const [lx, lz] of [[1.4, 0], [-1.2, .7], [-1.2, -.7]]) cyl(.05, .07, 1, M.frame, lx, -.75, lz, ship, 8);
-    for (const s of [-1, 1]) { const lab = plane(1.6, .32, new THREE.MeshBasicMaterial({ map: textTex('RB-29 · 2029', '#1a2130', { w: 640, h: 128, size: 80 }), transparent: true }), -.2, .2, s * .79, ship); if (s < 0) lab.rotation.y = PI; }
+    for (const s of [-1, 1]) { const lab = plane(1.6, .32, new THREE.MeshBasicMaterial({ map: textTex('RODRIGO STATION', '#1a2130', { w: 640, h: 128, size: 80 }), transparent: true }), -.2, .2, s * .79, ship); if (s < 0) lab.rotation.y = PI; }
     blocks.push([-2.8, 13, 3.4, 17.8]);
     updaters.push(t => { ship.position.y = 1.25 + Math.sin(t * .9) * .06; ship.rotation.z = Math.sin(t * .7) * .015; flames.forEach((f, i) => f.scale.set(1, 1, 1 + Math.sin(t * 20 + i) * .2)); });
 
@@ -1013,7 +1013,7 @@
   }
 
   const RENDER = {
-    ident: () => `<div class="w-hero">${photo()}<div><small class="kicker">Comandante de la misión · ${CV.year}</small><b class="w-name">${esc(CV.nombreCompleto)}</b>${chips(CV.hero.roles.slice(0, 2))}</div></div>
+    ident: () => `<div class="w-hero">${photo()}<div><small class="kicker">Comandante de la misión</small><b class="w-name">${esc(CV.nombreCompleto)}</b>${chips(CV.hero.roles.slice(0, 2))}</div></div>
       <p class="big">${esc(CV.hero.lema)}</p><p>${esc(CV.hero.intro)}</p>
       <div class="stats">${CV.ficha.map(f => `<div><small>${esc(f.clave)}</small><b>${esc(f.valor)}</b></div>`).join('')}</div>`,
     objetivos: () => `<p>${esc(CV.sobre.perfil)}</p>

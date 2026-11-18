@@ -1,5 +1,5 @@
 /* ==========================================================================
-   DATOS DEL CURRÍCULUM (año 2029) — el único archivo que necesitas editar.
+   DATOS DEL CURRÍCULUM — el único archivo que necesitas editar.
    --------------------------------------------------------------------------
    Lo usan las tres piezas del proyecto: la estación 3D (estacion.html),
    la versión clásica (index.html) y el CV para PDF (cv.html).
@@ -11,7 +11,6 @@ window.CV = {
   nombreCompleto: 'Rodrigo Bartolomé Pozuelo',
   iniciales: 'RB',
   foto: 'img/rodrigo.jpg',
-  year: 2029,
 
   /* ---------- Presentación ---------- */
   hero: {

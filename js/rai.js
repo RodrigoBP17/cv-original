@@ -9,7 +9,7 @@ window.raiAnswer = (raw) => {
   const has = (...w) => w.some(x => q.includes(x));
   const fIA = CV.formacion[CV.formacion.length - 1];
 
-  if (q === 'futuro' || q === 'el futuro') return 'Comando oculto encontrado. Más allá de ' + CV.year + ': seguir aprendiendo. La IA cambia tan rápido que el verdadero objetivo es no dejar de actualizarse nunca.';
+  if (q === 'futuro' || q === 'el futuro') return 'Comando oculto encontrado. Mi siguiente objetivo: seguir aprendiendo. La IA cambia tan rápido que el verdadero objetivo es no dejar de actualizarse nunca.';
   if (/\b(eres|chatgpt|real)\b/.test(q)) return 'No soy una IA real: soy un asistente simulado que busca palabras clave y responde solo con datos de este currículum. Si no sé algo, lo digo.';
   if (has('hola', 'buenas', 'hey')) return '¡Hola! Pregúntame por su experiencia, formación, tecnologías, idiomas o contacto.';
   if (has('gracias')) return 'A ti por explorar.';

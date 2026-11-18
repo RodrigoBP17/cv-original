@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Currículum 2029 · lógica de la web
+   Currículum · lógica de la web
    Índice: 1. Utilidades   2. Pintado de secciones   3. Puesta en marcha
            4. Portada (texto y red neuronal)   5. Navegación y scroll
            6. Desplegables, pestañas y foco de luz   7. Registro de exploración
@@ -11,7 +11,6 @@
 
   /* ---------- 1. Utilidades ---------- */
   const CV = window.CV;
-  const YEAR = CV.year;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -38,9 +37,8 @@
     /* Portada */
     $('#hero-lema').textContent = CV.hero.lema;
     $('#hero-intro').textContent = CV.hero.intro;
-    $('#hero-year').textContent = YEAR;
     $('#ficha-code').innerHTML =
-      `{\n  <span class="k">"año"</span>: <span class="v">${YEAR}</span>,\n` +
+      `{\n` +
       CV.ficha.map(f => `  <span class="k">"${esc(f.clave)}"</span>: <span class="v">"${esc(f.valor)}"</span>`).join(',\n') + '\n}';
 
     /* Sobre mí */
@@ -489,7 +487,7 @@
     let finished = false;
     const finish = () => { if (finished) return; finished = true; el.classList.add('done'); done(); };
     if (reduce || seen) { finish(); return; }
-    const lines = ['> cargando perfil: rodrigo_bartolome.cv', `> año ................... ${YEAR}`, '> formación ............. verificada', '> iniciando sistemas', '> ██████████████████ OK'];
+    const lines = ['> cargando perfil: rodrigo_bartolome.cv', '> perfil ................ Rodrigo Bartolomé', '> formación ............. verificada', '> iniciando sistemas', '> ██████████████████ OK'];
     let i = 0;
     const t = setInterval(() => {
       if (finished) { clearInterval(t); return; }
